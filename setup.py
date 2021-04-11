@@ -1,24 +1,22 @@
 #!/usr/bin/env python3
+import os
 from setuptools import setup, find_packages
 from pathlib import Path
 import platform
 
-if platform.system() == 'Windows':
-    USER_HOME_DIR = str(Path.home()) + '\\'
-else:
-    USER_HOME_DIR = str(Path.home()) + '/'
+USER_HOME_DIR = str(Path.home()) + os.sep
 
 with open("README.md", encoding='utf8') as readme:
     long_description = readme.read()
 
 setup(
     name="malwoverview",
-    version="4.0.2",
+    version="4.3.4",
     author="Alexandre Borges",
     author_email="alexandreborges@blackstormsecurity.com",
     license="GNU GPL v3.0",
     url="https://github.com/alexandreborges/malwoverview",
-    description=("Malwoverview is a first response tool for profiling malware samples, URLs, submitting and downloading malware samples."),
+    description=("Malwoverview is a first response tool for threat hunting."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_packages(),
@@ -32,11 +30,12 @@ setup(
         "colorama",
         "python-magic",
         "simplejson",
-        "requests",
+        "requests==2.22.0",
         "validators",
         "geocoder",
         "polyswarm-api",
         "pathlib",
+        "valhallaAPI",
         "configparser",
 		"python-magic-bin; platform_system == 'Windows'"
     ],
